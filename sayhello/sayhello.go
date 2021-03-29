@@ -43,8 +43,16 @@ func sayHello(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "408 Request Timeout "+msg, http.StatusRequestTimeout)
 	case "/410":
 		http.Error(w, "410 Gone "+msg, http.StatusGone)
+	case "/418":
+		http.Error(w, "418 I'm a teapot "+msg, http.StatusTeapot)
+	case "/425":
+		http.Error(w, "425 Too Early "+msg, http.StatusTooEarly)
+	case "/429":
+		http.Error(w, "429 Too Many Requests "+msg, http.StatusTooManyRequests)
 	case "/500":
 		http.Error(w, "500 Internal Server Error "+msg, http.StatusInternalServerError)
+	case "/501":
+		http.Error(w, "501 Not Implemented "+msg, http.StatusNotImplemented)
 	case "/503":
 		http.Error(w, "503 Service Unavailable "+msg, http.StatusServiceUnavailable)
 	default:

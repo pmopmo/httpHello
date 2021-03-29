@@ -28,7 +28,7 @@ Time is 2021-03-25 23:11:28 and you are calling from localhost:1111
 Since I use this for testing load balancing I have added the possibility to request a few HTTP status codes indicating 
 errors.
 
-The codes are 400, 403, 408, 410, 500 and 503 you can use them like this:
+The codes are 400, 403, 408, 410, 425, 429, 500, 501 and 503 you can use them like this:
 
     curl http://localhost:1111/403
 
