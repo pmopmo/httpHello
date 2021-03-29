@@ -1,7 +1,7 @@
 ## httpHello
 
 This is a small utility that listens to one or more ports for a http request and writes back a small html document
-containing current time and whence you came
+containing current time and destination
 
 Usage: `httpHello 1111 1112 1113 1114`\
 This will listen on the ports 1111 to 1114 (*if they are available*) until the application is terminated
