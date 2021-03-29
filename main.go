@@ -9,6 +9,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"sync"
 
 	"httpHello/sayhello"
 )
@@ -23,15 +24,17 @@ func main() {
 		os.Exit(1)
 
 	} else {
+		var wg sync.WaitGroup
+
+		// Had to to this here got a panic for multiple handlers for "/" when I had it in StartListener
+		// TODO find a better way if any
+		sayhello.SetHandler()
 
 		// os.Args[1:] => everything except first element
 		for _, port := range os.Args[1:] {
-			err := sayhello.StartListener(port)
-			if err != nil {
-				_, _ = fmt.Fprint(os.Stderr, err)
-			} else {
-				_, _ = fmt.Fprint(os.Stderr, "Listening on port: "+port)
-			}
+			wg.Add(1)
+			go func(p string) { _ = sayhello.StartListener(p) }(port)
 		}
+		wg.Wait()
 	}
 } // end of main

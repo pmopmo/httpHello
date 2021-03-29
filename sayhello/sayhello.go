@@ -11,6 +11,8 @@ import (
 	"httpHello/ports"
 )
 
+func SetHandler() { http.HandleFunc("/", sayHello) }
+
 func sayHello(w http.ResponseWriter, r *http.Request) {
 	t := time.Now()
 	html := `<!doctype html>
@@ -31,8 +33,8 @@ func sayHello(w http.ResponseWriter, r *http.Request) {
 	url := r.URL.Path
 	host := r.Host
 	datetime := t.Format("2006-01-02 15:04:05")
-	msg := fmt.Sprintf("\nTime is %s and you are calling from %s", datetime, host)
-	// TODO: add 429 Too Many Requests & 418 I'm a teapot
+	msg := fmt.Sprintf("\nTime is %s and you have reached %s", datetime, host)
+
 	// https://en.wikipedia.org/wiki/Hyper_Text_Coffee_Pot_Control_Protocol
 	switch url {
 	case "/404":
@@ -77,7 +79,6 @@ func StartListener(port string) error {
 	}
 
 	if ports.Available(port) {
-		http.HandleFunc("/", sayHello)
 
 		err := http.ListenAndServe(":"+port, nil)
 
