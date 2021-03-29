@@ -25,7 +25,8 @@ Time is 2021-03-25 23:11:28 and you are calling from localhost:1111
 </html>
 ```
 
-Since I use this for testing load balancing I have added the possibility to request a few http errorcodes.
+Since I use this for testing load balancing I have added the possibility to request a few HTTP status codes indicating 
+errors.
 
 The codes are 400, 403, 408, 410, 500 and 503 you can use them like this:
 

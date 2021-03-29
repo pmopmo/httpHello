@@ -24,10 +24,14 @@ func main() {
 
 	} else {
 
-		// TODO: if more than one argument loop over them
-		err := sayhello.StartListener(os.Args[1])
-		if err != nil {
-			_, _ = fmt.Fprint(os.Stderr, err)
+		// os.Args[1:] => everything except first element
+		for _, port := range os.Args[1:] {
+			err := sayhello.StartListener(port)
+			if err != nil {
+				_, _ = fmt.Fprint(os.Stderr, err)
+			} else {
+				_, _ = fmt.Fprint(os.Stderr, "Listening on port: "+port)
+			}
 		}
 	}
 } // end of main

@@ -32,7 +32,8 @@ func sayHello(w http.ResponseWriter, r *http.Request) {
 	host := r.Host
 	datetime := t.Format("2006-01-02 15:04:05")
 	msg := fmt.Sprintf("\nTime is %s and you are calling from %s", datetime, host)
-
+	// TODO: add 429 Too Many Requests & 418 I'm a teapot
+	// https://en.wikipedia.org/wiki/Hyper_Text_Coffee_Pot_Control_Protocol
 	switch url {
 	case "/404":
 		http.Error(w, "404 Not Found "+msg, http.StatusNotFound)
