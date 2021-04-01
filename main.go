@@ -11,7 +11,7 @@ import (
 	"os"
 	"sync"
 
-	"httpHello/sayhello"
+	"github.com/pmopmo/httpHello/sayhello"
 )
 
 func main() {

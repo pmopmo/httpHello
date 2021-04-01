@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"time"
 
-	"httpHello/ports"
+	"github.com/pmopmo/httpHello/ports"
 )
 
 func SetHandler() { http.HandleFunc("/", sayHello) }
